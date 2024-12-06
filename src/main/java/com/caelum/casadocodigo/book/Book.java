@@ -30,12 +30,11 @@ public class Book {
     private LocalDateTime publicationDate;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Book() {}
 
-    public Book(Long id, String title, String summary, BigDecimal price, String isbn, String category, String author, String tableOfContents, int numberOfPages, LocalDateTime publicationDate, LocalDateTime createdAt) {
-        this.id = id;
+    public Book(String title, String summary, BigDecimal price, String isbn, String category, String author, String tableOfContents, int numberOfPages, LocalDateTime publicationDate) {
         this.title = title;
         this.summary = summary;
         this.price = price;
@@ -45,7 +44,6 @@ public class Book {
         this.tableOfContents = tableOfContents;
         this.numberOfPages = numberOfPages;
         this.publicationDate = publicationDate;
-        this.createdAt = createdAt;
     }
 
     public Long getId() {
