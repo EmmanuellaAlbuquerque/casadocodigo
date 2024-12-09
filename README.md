@@ -17,10 +17,10 @@ curl -X GET localhost:8080/books/get-all-books
 curl -X POST localhost:8080/books/insert-book \
 -H "Content-Type: application/json" \
 -d '{
-"title": "sdfkskfalsdfklsdfdsf",
+"title": "teste titulo manu",
 "summary": "Teste",
 "price": 10.99,
-"isbn": "2231231231231",
+"isbn": "3331231231231",
 "category": "",
 "author": "cecilia",
 "numberOfPages": 1,

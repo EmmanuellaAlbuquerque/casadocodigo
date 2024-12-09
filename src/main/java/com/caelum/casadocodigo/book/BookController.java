@@ -23,14 +23,17 @@ public class BookController {
         List<Book> allBooks = bookRepository.findAll();
         List<BookDetailsResponse> bookDetailsResponseList = new ArrayList<>();
 
-        for(Book book : allBooks){
-            BookDetailsResponse bookDetailsResponse = new BookDetailsResponse(book);
-            bookDetailsResponseList.add(bookDetailsResponse);
-        }
+//        for(Book book : allBooks){
+//            BookDetailsResponse bookDetailsResponse = new BookDetailsResponse(book);
+//            bookDetailsResponseList.add(bookDetailsResponse);
+//        }
+
+        bookDetailsResponseList = allBooks.stream().map((book) -> {
+            return new BookDetailsResponse(book);
+        }).toList();
 
         return bookDetailsResponseList;
     }
-
 
     @PostMapping("/insert-book")
     public ResponseEntity<Void> insertBook(@Valid @RequestBody BookRequestDTO bookRequestDTO){
