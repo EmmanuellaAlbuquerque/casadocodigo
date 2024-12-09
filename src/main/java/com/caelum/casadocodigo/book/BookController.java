@@ -1,5 +1,6 @@
 package com.caelum.casadocodigo.book;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,8 +33,9 @@ public class BookController {
 
 
     @PostMapping("/insert-book")
-    public ResponseEntity<Void> insertBook(@RequestBody BookRequestDTO bookRequestDTO){
+    public ResponseEntity<Void> insertBook(@Valid @RequestBody BookRequestDTO bookRequestDTO){
 
+        //validar título
         //validar isbn
 
         bookRepository.save(bookRequestDTO.toModel());

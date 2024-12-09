@@ -14,5 +14,17 @@ curl -X POST localhost:8080/books/insert-book \
 
 curl -X GET localhost:8080/books/get-all-books
 
-
+curl -X POST localhost:8080/books/insert-book \
+-H "Content-Type: application/json" \
+-d '{
+"title": "sdfkskfalsdfklsdfdsf",
+"summary": "Teste",
+"price": 10.99,
+"isbn": "2231231231231",
+"category": "",
+"author": "cecilia",
+"numberOfPages": 1,
+"publicationDate": "2024-12-06T12:00:00"
+}'
 ```
+
