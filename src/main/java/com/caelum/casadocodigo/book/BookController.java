@@ -28,9 +28,7 @@ public class BookController {
 //            bookDetailsResponseList.add(bookDetailsResponse);
 //        }
 
-        bookDetailsResponseList = allBooks.stream().map((book) -> {
-            return new BookDetailsResponse(book);
-        }).toList();
+        bookDetailsResponseList = allBooks.stream().map((book) -> new BookDetailsResponse(book)).toList();
 
         return bookDetailsResponseList;
     }
