@@ -21,14 +21,8 @@ public class BookController {
     public List<BookDetailsResponse> getAllBook(){
 
         List<Book> allBooks = bookRepository.findAll();
-        List<BookDetailsResponse> bookDetailsResponseList = new ArrayList<>();
 
-//        for(Book book : allBooks){
-//            BookDetailsResponse bookDetailsResponse = new BookDetailsResponse(book);
-//            bookDetailsResponseList.add(bookDetailsResponse);
-//        }
-
-        bookDetailsResponseList = allBooks.stream().map((book) -> new BookDetailsResponse(book)).toList();
+        List<BookDetailsResponse> bookDetailsResponseList = allBooks.stream().map((book) -> new BookDetailsResponse(book)).toList();
 
         return bookDetailsResponseList;
     }
@@ -36,8 +30,13 @@ public class BookController {
     @PostMapping("/insert-book")
     public ResponseEntity<Void> insertBook(@Valid @RequestBody BookRequestDTO bookRequestDTO){
 
-        //validar título
-        //validar isbn
+        if(bookRepository.existsByTitle(bookRequestDTO.title())){
+            return ResponseEntity.badRequest().build();
+        }
+
+        if(bookRepository.existsByIsbn(bookRequestDTO.isbn())){
+            return ResponseEntity.badRequest().build();
+        }
 
         bookRepository.save(bookRequestDTO.toModel());
 

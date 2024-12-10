@@ -44,4 +44,6 @@ public record BookRequestDTO(
                 return new Book(title(), summary(), price(), isbn(), category(), author(), tableOfContents(), numberOfPages(), publicationDate());
         }
 
+
+
 }
